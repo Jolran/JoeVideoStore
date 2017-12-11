@@ -10,7 +10,7 @@ namespace JoeVideoStore.Controllers
     {
         public ActionResult Index()
         {
-
+            // First commit
             return View();
         }
 
