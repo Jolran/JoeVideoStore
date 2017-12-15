@@ -22,6 +22,17 @@ namespace JoeVideoStore.Controllers
             return View(movies);
         }
 
+        public ActionResult SortByTitle()
+        {
+            var movies = from movie in db.Movies
+                         orderby movie.Title ascending
+                         select movie;
+
+            return View(movies);
+        }
+
+
+
         // GET: Movie/Details/5
         public ActionResult Details(int id)
         {
