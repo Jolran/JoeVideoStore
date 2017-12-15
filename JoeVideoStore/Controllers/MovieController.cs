@@ -49,17 +49,17 @@ namespace JoeVideoStore.Controllers
         [HttpPost]
         public ActionResult Create(MovieModel movie)
         {
-            try
-            {
+
+            if (ModelState.IsValid)
+            { 
                 db.Movies.Add(movie);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+           
+            return View();
+            
         }
 
         // GET: Movie/Edit/5
