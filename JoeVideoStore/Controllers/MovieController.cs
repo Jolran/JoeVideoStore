@@ -2,7 +2,9 @@
 using JoeVideoStore.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -62,27 +64,35 @@ namespace JoeVideoStore.Controllers
             
         }
 
-        // GET: Movie/Edit/5
-        public ActionResult Edit(int id)
+        // GET: Movie/Edit/5   
+        // From Microsoft documentation Demo 
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);            
+
+            var movie = db.Movies.Find(id);
+
+            if (movie == null) return HttpNotFound();
+
+            
+            return View(movie);
         }
 
         // POST: Movie/Edit/5
+        // https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include= "ID,Title,Length,Rating, Genre")] MovieModel movie)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-
+                db.Entry(movie).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(movie);
         }
+
 
         // GET: Movie/Delete/5
         public ActionResult Delete(int id)
