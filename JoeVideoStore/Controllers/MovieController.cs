@@ -1,4 +1,5 @@
 ﻿using JoeVideoStore.Contexts;
+using JoeVideoStore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,11 +36,12 @@ namespace JoeVideoStore.Controllers
 
         // POST: Movie/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(MovieModel movie)
         {
             try
             {
-                // TODO: Add insert logic here
+                db.Movies.Add(movie);
+                db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
