@@ -35,13 +35,8 @@ namespace JoeVideoStore.Controllers
 
 
 
-        // GET: Movie/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: Movie/Create
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
