@@ -84,32 +84,39 @@ namespace JoeVideoStore.Controllers
             return View(customer);
         }
 
-        // GET: RentalCustomer/Delete/5
-        public ActionResult Delete(int id)
+
+
+        [HttpGet]
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var customer = db.Customers.Find(id);
+
+            if (customer == null) return HttpNotFound();
+
+
+            return View(customer);
         }
 
-        // POST: RentalCustomer/Delete/5
+
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteValid(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            var customer = db.Customers.Find(id);
+            db.Customers.Remove(customer);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
+
 
         // GET: RentalCustomer/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
+
     }
 }
