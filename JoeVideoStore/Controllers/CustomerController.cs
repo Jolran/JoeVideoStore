@@ -8,6 +8,8 @@ namespace JoeVideoStore.Controllers
 {
     public class CustomerController : Controller
     {
+        
+
         // GET: Customer
         public ActionResult Index()
         {

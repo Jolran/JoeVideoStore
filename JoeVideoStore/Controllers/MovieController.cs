@@ -13,7 +13,7 @@ namespace JoeVideoStore.Controllers
     public class MovieController : Controller
     {
 
-        MovieContext db = new MovieContext();
+        VideoStoreContext db = new VideoStoreContext();
 
 
         [HttpGet]

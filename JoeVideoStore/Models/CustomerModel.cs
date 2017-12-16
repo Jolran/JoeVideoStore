@@ -6,15 +6,8 @@ using System.Web;
 
 namespace JoeVideoStore.Models
 {
-    public class Customer
+    public class CustomerModel
     {
-        public Customer()
-        {
-            rentedmovies = new List<int>();
-        }
-
-        private List<int> rentedmovies;
-        public List<int> RentedMoviesId { get { return rentedmovies; } }
 
         [Key]
         public int Id { get; set; }
@@ -26,7 +19,6 @@ namespace JoeVideoStore.Models
         [Required]
         public string Address { get; set; }
         public string Email { get; set; }
-
         
     }
 }

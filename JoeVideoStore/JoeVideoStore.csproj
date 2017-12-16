@@ -128,10 +128,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Contexts\MovieContext.cs" />
+    <Compile Include="Contexts\VideoStoreContext.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
-    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\MovieModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
