@@ -4,11 +4,11 @@
     ViewBag.Title = "Index";
 }
 
-<h2 class="btn-block">Movies</h2>
+<h2>Movies</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create",null, new { @class = "btn btn-primary btn-sm" })
-    @Html.ActionLink("Sort Alphabetically", "SortByTitle", null, new { @class = "btn btn-primary btn-sm" })
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success btn-sm " })
+    @Html.ActionLink("Sort Alphabetically", "SortByTitle", null, new { @class = "btn btn-success btn-sm" })
 </p>
 <table class="table">
     <tr>
@@ -42,8 +42,8 @@
             @Html.DisplayFor(modelItem => item.Genre)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new { @class = "btn btn-primary btn-xs" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-primary btn-xs" })
         </td>
     </tr>
 }
