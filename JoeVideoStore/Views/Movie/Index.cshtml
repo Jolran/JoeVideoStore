@@ -4,11 +4,11 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 class="btn-block">Movies</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
-    @Html.ActionLink("Sort Alphabetically", "SortByTitle")
+    @Html.ActionLink("Create New", "Create",null, new { @class = "btn btn-primary btn-sm" })
+    @Html.ActionLink("Sort Alphabetically", "SortByTitle", null, new { @class = "btn btn-primary btn-sm" })
 </p>
 <table class="table">
     <tr>
