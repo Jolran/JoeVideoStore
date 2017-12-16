@@ -16,7 +16,7 @@ namespace JoeVideoStore.Controllers
         MovieContext db = new MovieContext();
 
 
-        // GET: Movie
+        [HttpGet]
         public ActionResult Index()
         {
             var movies = db.Movies.ToList();
@@ -24,6 +24,7 @@ namespace JoeVideoStore.Controllers
             return View(movies);
         }
 
+        [HttpGet]
         public ActionResult SortByTitle()
         {
             var movies = from movie in db.Movies
@@ -59,7 +60,7 @@ namespace JoeVideoStore.Controllers
         }
       
         // From Microsoft article (link shown below)
-        // Edit and Delete will be very similar
+        // Edit and Delete will be similar
         [HttpGet]
         public ActionResult Edit(int? id)
         {
