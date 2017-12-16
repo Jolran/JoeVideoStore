@@ -4,6 +4,12 @@
     ViewBag.Title = "Create";
 }
 
+@using JoeVideoStore.Models
+@{
+    var Ratings = MovieModel.Ratings;
+    var Genres = MovieModel.Genres;
+}
+
 <h2>Create</h2>
 
 
@@ -35,14 +41,7 @@
             @Html.LabelFor(model => model.Rating, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                
-                @Html.DropDownList("Rating", new List<SelectListItem>
-                {
-                    new SelectListItem {Text = "1", Value = "1" },
-                    new SelectListItem {Text = "2", Value = "2" },
-                    new SelectListItem {Text = "3", Value = "3" },
-                    new SelectListItem {Text = "4", Value = "4" },
-                    new SelectListItem {Text = "5", Value = "5" }
-                }, "Select Rating")
+                @Html.DropDownList("Rating", Ratings, "Select Rating")
        
 
                 @Html.ValidationMessageFor(model => model.Rating, "", new { @class = "text-danger" })
@@ -53,22 +52,8 @@
             @Html.LabelFor(model => model.Genre, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
 
-                @Html.DropDownList("Genre", new List<SelectListItem>
-                {
-                    new SelectListItem {Text = "Action", Value = "Action" },
-                    new SelectListItem {Text = "Adventure", Value = "Adventure" },
-                    new SelectListItem {Text = "Carton", Value = "Carton" },
-                    new SelectListItem {Text = "Comedy", Value = "Comedy" },
-                    new SelectListItem {Text = "Documentary", Value = "Documentary" },
-                    new SelectListItem {Text = "Drama", Value = "Drama" },
-                    new SelectListItem {Text = "Horror", Value = "Horror" },
-                    new SelectListItem {Text = "Musical", Value = "Musical" },
-                    new SelectListItem {Text = "Romantic", Value = "Romantic" },
-                    new SelectListItem {Text = "Sci-Fi", Value = "Sci-Fi" },
-                    new SelectListItem {Text = "Thriller", Value = "Thriller" },
-                    new SelectListItem {Text = "Western", Value = "Western" },
-                    new SelectListItem {Text = "Other", Value = "Other" }
-                }, "Select Genre")
+                @Html.DropDownList("Genre", Genres, "Select Genre")
+
                 @Html.ValidationMessageFor(model => model.Genre, "", new { @class = "text-danger" })
             </div>
         </div>
