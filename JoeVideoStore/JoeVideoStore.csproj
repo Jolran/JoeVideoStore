@@ -128,15 +128,16 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Contexts\VideoStoreContext.cs" />
-    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Contexts\RentalCustomerContext.cs" />
+    <Compile Include="Contexts\MovieContext.cs" />
     <Compile Include="Controllers\MovieController.cs" />
-    <Compile Include="Models\CustomerModel.cs" />
+    <Compile Include="Controllers\RentalCustomerController.cs" />
     <Compile Include="Models\MovieModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\RentalCustomer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -180,10 +181,12 @@
     <Content Include="Views\Movie\SortByTitle.cshtml" />
     <Content Include="Views\Movie\Edit.cshtml" />
     <Content Include="Views\Movie\Delete.cshtml" />
+    <Content Include="Views\RentalCustomer\Index.cshtml" />
+    <Content Include="Views\RentalCustomer\Create.cshtml" />
+    <Content Include="Views\RentalCustomer\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Customer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

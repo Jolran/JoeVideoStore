@@ -13,7 +13,7 @@ namespace JoeVideoStore.Controllers
     public class MovieController : Controller
     {
 
-        VideoStoreContext db = new VideoStoreContext();
+        MovieContext db = new MovieContext();
 
 
         [HttpGet]
@@ -78,7 +78,7 @@ namespace JoeVideoStore.Controllers
         // https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include= "ID,Title,Length,Rating, Genre")] MovieModel movie)
+        public ActionResult Edit([Bind(Include= "Id,Title,Length,Rating, Genre")] MovieModel movie)
         {
             if (ModelState.IsValid)
             {

@@ -6,9 +6,8 @@ using System.Web;
 
 namespace JoeVideoStore.Models
 {
-    public class CustomerModel
+    public class RentalCustomer
     {
-
         [Key]
         public int Id { get; set; }
 
@@ -19,6 +18,5 @@ namespace JoeVideoStore.Models
         [Required]
         public string Address { get; set; }
         public string Email { get; set; }
-        
     }
 }
