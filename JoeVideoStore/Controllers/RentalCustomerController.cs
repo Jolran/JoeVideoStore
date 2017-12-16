@@ -23,7 +23,18 @@ namespace JoeVideoStore.Controllers
             return View(customers);
         }
 
-        
+        [HttpGet]
+        public ActionResult SortByName()
+        {
+            var customers = from customer in db.Customers
+                            orderby (customer.FirstName + customer.LastName) ascending
+                            select customer;
+
+            return View(customers);
+        }
+
+
+
         [HttpGet]
         public ActionResult Create()
         {

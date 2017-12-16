@@ -184,6 +184,7 @@
     <Content Include="Views\RentalCustomer\Index.cshtml" />
     <Content Include="Views\RentalCustomer\Create.cshtml" />
     <Content Include="Views\RentalCustomer\Edit.cshtml" />
+    <Content Include="Views\RentalCustomer\SortByName.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
