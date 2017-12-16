@@ -35,14 +35,13 @@ namespace JoeVideoStore.Controllers
 
 
 
-        // GET: Movie/Create
         [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Movie/Create
+
         [HttpPost]
         public ActionResult Create(MovieModel movie)
         {
@@ -58,9 +57,10 @@ namespace JoeVideoStore.Controllers
             return View();
             
         }
-
-        // GET: Movie/Edit/5   
-        // From Microsoft documentation Demo 
+      
+        // From Microsoft article (link shown below)
+        // Edit and Delete will be very similar
+        [HttpGet]
         public ActionResult Edit(int? id)
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);            
@@ -73,7 +73,7 @@ namespace JoeVideoStore.Controllers
             return View(movie);
         }
 
-        // POST: Movie/Edit/5
+ 
         // https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/introduction/examining-the-edit-methods-and-edit-view
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -89,26 +89,30 @@ namespace JoeVideoStore.Controllers
         }
 
 
-        // GET: Movie/Delete/5
-        public ActionResult Delete(int id)
+
+        [HttpGet]
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var movie = db.Movies.Find(id);
+
+            if (movie == null) return HttpNotFound();
+
+
+            return View(movie);
         }
 
-        // POST: Movie/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteValid(int id)
+        {
+            var movie = db.Movies.Find(id);
+            db.Movies.Remove(movie);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
