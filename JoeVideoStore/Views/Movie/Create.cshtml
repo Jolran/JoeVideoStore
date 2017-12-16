@@ -41,8 +41,9 @@
             @Html.LabelFor(model => model.Rating, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                
-                @Html.DropDownList("Rating", Ratings, "Select Rating")
-       
+                @*Edit MovieModel also uses this dropdownlist and alters starting values so we must reset it here*@                
+                @Html.DropDownList("Rating", new SelectList(Ratings, "Value", "Text", "Select Rating"), "Select Rating")
+                
 
                 @Html.ValidationMessageFor(model => model.Rating, "", new { @class = "text-danger" })
             </div>
@@ -52,7 +53,7 @@
             @Html.LabelFor(model => model.Genre, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
 
-                @Html.DropDownList("Genre", Genres, "Select Genre")
+                @Html.DropDownList("Genre", new SelectList(Genres, "Value", "Text", "Select Genre"), "Select Genre")
 
                 @Html.ValidationMessageFor(model => model.Genre, "", new { @class = "text-danger" })
             </div>
