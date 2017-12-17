@@ -31,9 +31,23 @@ namespace JoeVideoStore.Controllers
             { 
                
                 ViewBag.movieid   = movieId;
-                ViewBag.customers = from customer in db.Customers
-                                    orderby (customer.FirstName + customer.LastName) ascending
-                                    select customer;
+
+                // Sort customer list
+                var customers = from customer in db.Customers
+                                orderby (customer.LastName) ascending
+                                select customer;
+
+                // If we sort in this query we have to sort by concatenated name which dont work well....
+                List<SelectListItem> selects = customers.Select(c => new SelectListItem {
+                    Text = c.FirstName + " " + c.LastName,
+                    Value = c.Id.ToString()
+                }).ToList();
+
+
+                                                
+
+
+               ViewBag.customers = selects;
 
                 return View();
             }          

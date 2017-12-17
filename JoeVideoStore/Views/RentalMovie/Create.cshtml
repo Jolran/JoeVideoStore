@@ -1,8 +1,8 @@
 ﻿
-@using JoeVideoStore.Models;
 
 @{
-    
+    List<SelectListItem> customers = ViewBag.customers;
+
     ViewBag.Title = "Create";
 }
 
@@ -10,29 +10,30 @@
 
 <div style="height:auto; overflow:auto">
 
-    <table class="table table-bordered table-striped">
-        <tr></tr>
-        <tr class="success">
-            <th>
-                Firstname
-            </th>
-            <th>
-                LastName
-            </th>
-        </tr>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-        @foreach (RentalCustomer customer in ViewBag.customers)
-        {
-            <tr>
-                <td>
-                    @customer.FirstName
-                </td>
-                <td>
-                    @customer.LastName
-            </td>
-        </tr>
-        }
+        
+        <div class="form-group">
+            Customers
+            
+            
+            <div class="col-md-2">
+                @Html.DropDownList("Customers", customers, "Select customer")
+            </div>
+        </div>
 
-    </table>
+
+        @*<div class="form-actions no-color">
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary btn-sm" })
+            <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
+
+        </div>*@
+
+    }
+
+      
+    
 
 </div>
