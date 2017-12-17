@@ -128,9 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Contexts\RentalCustomerContext.cs" />
-    <Compile Include="Contexts\MovieContext.cs" />
-    <Compile Include="Contexts\RentalMovieContext.cs" />
+    <Compile Include="Contexts\DataBaseContext.cs" />
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\RentalCustomerController.cs" />
     <Compile Include="Controllers\RentalMovieController.cs" />

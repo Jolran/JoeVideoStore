@@ -10,17 +10,15 @@ namespace JoeVideoStore.Controllers
     public class RentalMovieController : Controller
     {
 
-        RentalMovieContext db = new RentalMovieContext();
+        DataBaseContext db = new DataBaseContext();
 
 
         [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.rentalContext = db;
-            ViewBag.movieContext = new MovieContext();
-
+   
             var rentals = db.RentalMovies.ToList();
-            
+ 
             return View(rentals);
         }
 
@@ -70,7 +68,15 @@ namespace JoeVideoStore.Controllers
             }
         }
 
-        
+
+        protected override void Dispose(bool disposing)
+        { 
+            if (db != null) 
+            { 
+                 db.Dispose(); 
+            } 
+            base.Dispose(disposing); 
+        } 
 
         
     }

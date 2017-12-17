@@ -13,8 +13,7 @@ namespace JoeVideoStore.Controllers
     public class MovieController : Controller
     {
 
-        MovieContext db = new MovieContext();
-
+        DataBaseContext db = new DataBaseContext();
 
         [HttpGet]
         public ActionResult Index()
@@ -23,6 +22,7 @@ namespace JoeVideoStore.Controllers
 
             return View(movies);
         }
+
 
         [HttpGet]
         public ActionResult SortByTitle()
@@ -116,6 +116,14 @@ namespace JoeVideoStore.Controllers
             return RedirectToAction("Index");
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            if (db != null)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
     }
 }

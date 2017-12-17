@@ -7,8 +7,15 @@ using System.Web;
 
 namespace JoeVideoStore.Contexts
 {
-    public class RentalMovieContext : DbContext
+    public class DataBaseContext : DbContext
     {
+        public DataBaseContext() : base("name=DataBaseContext")
+        {
+
+        }
+
+        public DbSet<MovieModel> Movies { get; set; }
+        public DbSet<RentalCustomer> Customers { get; set; }
         public DbSet<RentalMovie> RentalMovies { get; set; }
     }
 }
