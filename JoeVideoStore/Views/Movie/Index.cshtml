@@ -10,8 +10,9 @@
     @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success btn-sm" })
     @Html.ActionLink("Sort Alphabetically", "SortByTitle", null, new { @class = "btn btn-success btn-sm" })
 </p>
-<table class="table">
-    <tr>
+<table class="table table-bordered table-striped">
+    <tr></tr>
+    <tr class="success">
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
@@ -43,7 +44,8 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new { @class = "btn btn-primary btn-xs" }) 
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-primary btn-xs" })
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" })
+            @Html.ActionLink("Rent", "Create", "RentalMovie", new { movieId = item.Id }, new { @class = "btn btn-primary btn-xs" })
         </td>
     </tr>
 }

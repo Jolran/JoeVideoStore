@@ -1,0 +1,38 @@
+﻿
+@using JoeVideoStore.Models;
+
+@{
+    
+    ViewBag.Title = "Create";
+}
+
+<h2>Rental Movies</h2>
+
+<div style="height:auto; overflow:auto">
+
+    <table class="table table-bordered table-striped">
+        <tr></tr>
+        <tr class="success">
+            <th>
+                Firstname
+            </th>
+            <th>
+                LastName
+            </th>
+        </tr>
+
+        @foreach (RentalCustomer customer in ViewBag.customers)
+        {
+            <tr>
+                <td>
+                    @customer.FirstName
+                </td>
+                <td>
+                    @customer.LastName
+            </td>
+        </tr>
+        }
+
+    </table>
+
+</div>

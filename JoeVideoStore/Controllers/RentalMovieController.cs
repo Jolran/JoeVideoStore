@@ -1,4 +1,5 @@
 ﻿using JoeVideoStore.Contexts;
+using JoeVideoStore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,51 +23,48 @@ namespace JoeVideoStore.Controllers
             return View(rentals);
         }
 
+
+     
+        public ActionResult Create(int? movieId)
+        {
+            if (movieId != null)
+            { 
+               
+                ViewBag.movieid   = movieId;
+                ViewBag.customers = from customer in db.Customers
+                                    orderby (customer.FirstName + customer.LastName) ascending
+                                    select customer;
+
+                return View();
+            }          
+
+            return RedirectToAction("Index");
+        }
+
         
-
-        // GET: RentalMovie/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: RentalMovie/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(int movieId, int customerId)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                // "Id" is generated as primary key and "Rentend" when movie returns from customer.
+                RentalMovie movie = new RentalMovie()
+                {
+                    MovieId = movieId,
+                    CustomerId = customerId,
+                    RentStart = DateTime.Now
+                };
+
+                db.RentalMovies.Add(movie);
+                db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
-        }
 
-        // GET: RentalMovie/Edit/5
-        public ActionResult Edit(int id)
-        {
             return View();
         }
 
-        // POST: RentalMovie/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
 
 
         protected override void Dispose(bool disposing)
