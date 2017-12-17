@@ -1,0 +1,50 @@
+﻿@model IEnumerable<JoeVideoStore.Models.RentalMovie>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Rented Movies</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Movie   
+        </th>
+        <th>
+            Customer
+        </th>
+        <th>
+            Returned Date
+        </th>
+        <th>
+            Rent Start Date
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            
+            @Html.DisplayFor(modelItem => item.MovieId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerId)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.Rented)*@
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RentStart)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+        </td>
+    </tr>
+}
+
+</table>

@@ -9,6 +9,8 @@ namespace JoeVideoStore.Contexts
 {
     public class RentalCustomerContext : DbContext
     {
-        public DbSet<RentalCustomer> Customers { get; set; } 
+        public DbSet<RentalCustomer> Customers { get; set; }
+
+        public System.Data.Entity.DbSet<JoeVideoStore.Models.RentalMovie> RentalMovies { get; set; }
     }
 }
