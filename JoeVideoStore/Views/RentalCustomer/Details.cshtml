@@ -1,25 +1,53 @@
 ﻿@model JoeVideoStore.Models.RentalCustomer
-
+@using JoeVideoStore.Models
 @{
     ViewBag.Title = "Details";
     var fullname = Model.FirstName + " " + Model.LastName;
-    List<string> movies = ViewBag.movieTitles;
+    List<MovieModel> movies = ViewBag.movieTitles;
 }
 
 <h2>Customers</h2>
 
-<div>
-    <h4>Rented Movies for @fullname</h4>
-    <hr />
+<h4>Rented Movies for @fullname</h4>
+
+<table class="table table-bordered table-striped">
+    <tr></tr>
+    <tr class="success">
+        <th>
+            Title
+        </th>
+        <th>
+            Length
+        </th>
+        <th>
+            Rating
+        </th>
+        <th>
+            Genre
+        </th>
+    </tr>
+
 @foreach (var item in movies)
 {
-    <div>
-        @item
-    </div>
+    <tr>
+        <td>
+            @item.Title
+        </td>
+        <td>
+            @item.Length
+        </td>
+        <td>
+            @item.Rating
+        </td>
+        <td>
+            @item.Genre
+        </td>
+    </tr>
 }
 
-</div>
+</table>
+
 
 <p>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary btn-xs" })
 </p>

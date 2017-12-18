@@ -121,7 +121,7 @@ namespace JoeVideoStore.Controllers
                                    join rm in db.RentalMovies
                                    on mv.Id equals rm.MovieId
                                    where rm.CustomerId == id
-                                   select mv.Title).ToList();
+                                   select mv).ToList();
 
             return View(customer);
         }
