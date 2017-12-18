@@ -185,6 +185,7 @@
     <Content Include="Views\RentalCustomer\Delete.cshtml" />
     <Content Include="Views\RentalMovie\Index.cshtml" />
     <Content Include="Views\RentalMovie\Rent.cshtml" />
+    <Content Include="Views\RentalCustomer\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

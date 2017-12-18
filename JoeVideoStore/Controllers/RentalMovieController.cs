@@ -53,7 +53,7 @@ namespace JoeVideoStore.Controllers
         {
             if (ModelState.IsValid)
             {
-                // "Id" is generated as primary key and "Rentend" when movie returns from customer.
+                // RentEnd cannot be null so we say "if RentStart is the same as RentEnd then the movie is rented"
                 RentalMovie movie = new RentalMovie()
                 {
                     MovieId = Int32.Parse(movieid),

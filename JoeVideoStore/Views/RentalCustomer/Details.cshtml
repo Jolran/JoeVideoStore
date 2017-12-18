@@ -1,0 +1,25 @@
+﻿@model JoeVideoStore.Models.RentalCustomer
+
+@{
+    ViewBag.Title = "Details";
+    var fullname = Model.FirstName + " " + Model.LastName;
+    List<string> movies = ViewBag.movieTitles;
+}
+
+<h2>Customers</h2>
+
+<div>
+    <h4>Rented Movies for @fullname</h4>
+    <hr />
+@foreach (var item in movies)
+{
+    <div>
+        @item
+    </div>
+}
+
+</div>
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

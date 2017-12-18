@@ -115,7 +115,15 @@ namespace JoeVideoStore.Controllers
         // GET: RentalCustomer/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var customer = db.Customers.Find(id);
+
+            ViewBag.movieTitles = (from mv in db.Movies
+                                   join rm in db.RentalMovies
+                                   on mv.Id equals rm.MovieId
+                                   where rm.CustomerId == id
+                                   select mv.Title).ToList();
+
+            return View(customer);
         }
 
 
