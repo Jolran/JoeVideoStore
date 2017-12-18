@@ -8,32 +8,33 @@
 
 <h2>Rental Movies</h2>
 
-<div style="height:auto; overflow:auto">
+
 
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
-        
+        <input name="movieid" type="hidden" value="@ViewBag.movieid" />
+
         <div class="form-group">
-            Customers
+            @*@Html.LabelFor(model => model.Genre, htmlAttributes: new { @class = "control-label col-md-2" })*@
             
             
             <div class="col-md-2">
-                @Html.DropDownList("Customers", customers, "Select customer")
+                @Html.DropDownList("customerid", customers, "Select customer")
             </div>
         </div>
 
 
-        @*<div class="form-actions no-color">
-            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary btn-sm" })
-            <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
+        <div class="form-actions no-color">
+            @Html.ActionLink("Back to Movies", "Index", "Movie", null, new { @class = "btn btn-primary btn-xs" })
+            <input type="submit" value="Create" class="btn btn-danger btn-sm" />
 
-        </div>*@
+        </div>
 
     }
 
       
     
 
-</div>
+
