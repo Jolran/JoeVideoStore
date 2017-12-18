@@ -51,7 +51,7 @@ namespace JoeVideoStore.Controllers
         [HttpPost]
         public ActionResult Rent(string movieid, string customerid)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && !string.IsNullOrEmpty(customerid) )
             {
                 // RentEnd cannot be null so we say "if RentStart is the same as RentEnd then the movie is rented"
                 RentalMovie movie = new RentalMovie()
@@ -68,7 +68,8 @@ namespace JoeVideoStore.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View();
+            return RedirectToAction("Index", "Movie",null);
+
         }
 
 
