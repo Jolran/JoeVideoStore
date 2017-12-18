@@ -61,7 +61,7 @@
           @{
               if (rented)
               {
-                  @Html.ActionLink("Return Movie", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" });
+                  @Html.ActionLink("Return Movie", "ReturnRentalMovie", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" });
               }
             }           
         </td>

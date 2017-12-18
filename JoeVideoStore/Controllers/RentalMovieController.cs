@@ -2,6 +2,7 @@
 using JoeVideoStore.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -30,6 +31,7 @@ namespace JoeVideoStore.Controllers
             if (movieId != null)
             {              
                 ViewBag.movieid   = movieId;
+               
                 // Mix query styles..
                 ViewBag.customers = (from customer in db.Customers
                                      orderby (customer.LastName) ascending
@@ -69,7 +71,21 @@ namespace JoeVideoStore.Controllers
             return View();
         }
 
-        
+
+        // This should be fairly safe action since handling a known object that is retreived from a click..
+ 
+       
+        public ActionResult ReturnRentalMovie(int id)
+        {
+
+            RentalMovie rm = db.RentalMovies.Find(id);
+            db.Entry(rm).State = EntityState.Modified;
+            rm.RentEnd = DateTime.Now;
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
 
 
         protected override void Dispose(bool disposing)
