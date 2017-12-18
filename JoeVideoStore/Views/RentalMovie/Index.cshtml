@@ -6,11 +6,12 @@
     DataBaseContext db = ViewBag.db;
 }
 
-<h2>Rental Movies</h2>
+<h2>Rented Movies</h2>
 
 
-<table class="table">
-    <tr>
+<table class="table table-bordered table-striped">
+    <tr></tr>
+    <tr class="success">
         <th>
             Movie
         </th>
@@ -26,46 +27,46 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model)
-{
+    @foreach (var item in Model)
+    {
 
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => db.Movies.Find(item.MovieId).Title)
-        </td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => db.Movies.Find(item.MovieId).Title)
+            </td>
 
-        <td>
-            @{  
-                var customer = db.Customers.Find(item.CustomerId);
-                var fullname = customer.FirstName + " " + customer.LastName;
-            }
+            <td>
+                @{
+                    var customer = db.Customers.Find(item.CustomerId);
+                    var fullname = customer.FirstName + " " + customer.LastName;
+                }
 
-            @Html.DisplayFor(modelItem => fullname)
-        </td>
+                @Html.DisplayFor(modelItem => fullname)
+            </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.RentStart)
-        </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentStart)
+            </td>
 
-        <td>
-            @{ 
-                bool rented = item.RentStart.Equals(item.RentEnd);
-                string rentedStr = rented ? "Rented" : item.RentEnd.ToString();
+            <td>
+                @{
+                    bool rented = item.RentStart.Equals(item.RentEnd);
+                    string rentedStr = rented ? "Rented" : item.RentEnd.ToString();
 
-            }
+                }
 
-            @Html.DisplayFor(modelItem => rentedStr)
-        </td>
+                @Html.DisplayFor(modelItem => rentedStr)
+            </td>
 
-        <td>
-          @{
-              if (rented)
-              {
-                  @Html.ActionLink("Return Movie", "ReturnRentalMovie", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" });
-              }
-            }           
-        </td>
-    </tr>
-}
+            <td>
+                @{
+                    if (rented)
+                    {
+                        @Html.ActionLink("Return Movie", "ReturnRentalMovie", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" });
+                    }
+                }
+            </td>
+        </tr>
+                    }
 
 </table>

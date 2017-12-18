@@ -6,33 +6,50 @@
     ViewBag.Title = "Rent";
 }
 
-<h2>Rental Movies</h2>
+<h2>Rented Movies</h2>
+
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <input name="movieid" type="hidden" value="@ViewBag.movieid" />
+
+    <table>
+        <tr>
+            <th>
+                <div class="form-actions no-color">
+                    @Html.ActionLink("Back to Movies", "Index", "Movie", null, new { @class = "btn btn-primary btn-sm" })
+                    <input type="submit" value="Rent" class="btn btn-danger btn-sm" />
+                </div>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <h4>Select Customer</h4>
+                
+            </th>
+        </tr>
+        <tr>
+            <th>
+                @Html.DropDownList("customerid", customers, new
+                {
+                    size = "10",
+                    style = "Width: 250px"
+                })
+            </th>
+        </tr>
+       
+    </table>
 
 
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <input name="movieid" type="hidden" value="@ViewBag.movieid" />
-
-        <div class="form-group">
-            @*@Html.LabelFor(model => model.Genre, htmlAttributes: new { @class = "control-label col-md-2" })*@
-            
-            
-            <div class="col-md-2">
-                @Html.DropDownList("customerid", customers, "Select customer")
-            </div>
-        </div>
+    
 
 
-        <div class="form-actions no-color">
-            @Html.ActionLink("Back to Movies", "Index", "Movie", null, new { @class = "btn btn-primary btn-sm" })
-            <input type="submit" value="Rent" class="btn btn-danger btn-sm" />
+    
 
-        </div>
-
-    }
+}
 
       
     

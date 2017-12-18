@@ -10,8 +10,9 @@
     @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success btn-sm" })
     @Html.ActionLink("Sort Alphabetically", "SortByName", null, new { @class = "btn btn-success btn-sm" })
 </p>
-<table class="table">
-    <tr>
+<table class="table table-bordered table-striped">
+    <tr></tr>
+    <tr class="success">
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
@@ -27,26 +28,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new { @class = "btn btn-primary btn-xs" }) 
-            @Html.ActionLink("Rentals", "Details", new { id=item.Id }, new { @class = "btn btn-primary btn-xs" }) 
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-primary btn-xs" })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" })
+                @Html.ActionLink("Rentals", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" })
+            </td>
+        </tr>
+    }
 
 </table>
