@@ -32,7 +32,7 @@ namespace JoeVideoStore.Controllers
             {              
                 ViewBag.movieid   = movieId;
                
-                // Mix query styles..
+                // Sort and populate a selectlist for the dropdownlist of customers..
                 ViewBag.customers = (from customer in db.Customers
                                      orderby (customer.LastName) ascending
                                      select customer)
@@ -73,9 +73,7 @@ namespace JoeVideoStore.Controllers
         }
 
 
-        // This should be fairly safe action since handling a known object that is retreived from a click..
- 
-       
+        // This should be fairly safe action since handling a known object that is retreived from a click..     
         public ActionResult ReturnRentalMovie(int id)
         {
 
