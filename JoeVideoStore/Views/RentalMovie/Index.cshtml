@@ -32,16 +32,38 @@
 
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => db.Movies.Find(item.MovieId).Title)
+                @{
+                    var movie = db.Movies.Find(item.MovieId);
+                    if (movie == null)
+                    {
+                        <small class="text-center" >- - movie  removed - -</small>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => movie.Title)
+                    }
+           
+
+                }
+                
+                
             </td>
 
             <td>
                 @{
                     var customer = db.Customers.Find(item.CustomerId);
-                    var fullname = customer.FirstName + " " + customer.LastName;
+                    if (customer == null)
+                    {
+                        <small class="text-center">- - customer  removed - -</small>
+                    }
+                    else
+                    {
+                        var fullname = customer.FirstName + " " + customer.LastName;
+                        @Html.DisplayFor(modelItem => fullname)
+                    }
+           
                 }
 
-                @Html.DisplayFor(modelItem => fullname)
             </td>
 
             <td>
