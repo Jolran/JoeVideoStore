@@ -25,7 +25,7 @@ namespace JoeVideoStore.Controllers
 
 
      
-        public ActionResult Create(int? movieId)
+        public ActionResult Rent(int? movieId)
         {
             if (movieId != null)
             {              
@@ -47,7 +47,7 @@ namespace JoeVideoStore.Controllers
 
         
         [HttpPost]
-        public ActionResult Create(string movieid, string customerid)
+        public ActionResult Rent(string movieid, string customerid)
         {
             if (ModelState.IsValid)
             {

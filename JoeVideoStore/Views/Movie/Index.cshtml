@@ -45,7 +45,7 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new { @class = "btn btn-primary btn-xs" }) 
             @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" })
-            @Html.ActionLink("Rent", "Create", "RentalMovie", new { movieId = item.Id }, new { @class = "btn btn-primary btn-xs" })
+            @Html.ActionLink("Rent", "Rent", "RentalMovie", new { movieId = item.Id }, new { @class = "btn btn-primary btn-xs" })
         </td>
     </tr>
 }
